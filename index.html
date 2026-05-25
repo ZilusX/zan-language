@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zilus Smart Translator 🪐</title>
+    <title>Zilus Smart Translator & Audio 🪐</title>
     <style>
         :root {
             --bg-color: #0d1117;
@@ -46,7 +46,7 @@
             direction: ltr;
             text-align: left;
         }
-        button {
+        button.btn-translate {
             background-color: var(--accent-color);
             color: #fff;
             border: none;
@@ -58,7 +58,7 @@
             width: 100%;
             transition: 0.3s;
         }
-        button:hover { background-color: #1f6feb; }
+        button.btn-translate:hover { background-color: #1f6feb; }
         .box-title {
             text-align: right;
             font-size: 14px;
@@ -80,44 +80,54 @@
             white-space: pre-wrap;
         }
         #symbolsOutput { font-size: 22px; color: var(--neon-green); letter-spacing: 1px; }
-        #englishOutput { font-size: 18px; color: #fff; font-weight: bold; }
-        .word-span {
-            display: inline-block;
-            margin: 2px 4px;
-            padding: 2px 6px;
-            border-radius: 4px;
+        #englishOutput { font-size: 18px; color: #fff; }
+        
+        /* تصميم كتل الكلمات مع أزرار النطق */
+        .word-block {
+            display: inline-flex;
+            align-items: center;
             background: #21262d;
-            cursor: pointer;
-            user-select: none;
             border: 1px solid #30363d;
+            padding: 5px 10px;
+            border-radius: 6px;
+            margin: 5px;
         }
-        .word-span:hover { background: var(--accent-color); }
-        .instruction {
+        .word-text {
+            color: #fff;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+        .btn-speak {
+            background: #30363d;
+            color: var(--neon-green);
+            border: 1px solid #444c56;
+            padding: 3px 8px;
             font-size: 12px;
-            color: #8b949e;
-            display: block;
-            margin-top: 15px;
-            text-align: right;
-            direction: rtl;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-speak:hover {
+            background: var(--neon-green);
+            color: #0d1117;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>المترجم الذكي للغة زيلوس 🪐</h1>
-    <p class="subtitle">نظام الترجمة التلقائية ثنائية الاتجاه (اكتب فقط واضغط ترجمة)</p>
+    <h1>المترجم الذكي ونظام النطق المطور 🪐</h1>
+    <p class="subtitle">اكتب نصك بالإنجليزية وسيظهر لك النطق المكتوب مع زر تشغيل صوتي مخصص لكل كلمة</p>
 
-    <textarea id="inputText" placeholder="ضع هنا نصاً إنجليزياً ليتحول إلى رموز، أو ضع الرموز لتتحول فوراً إلى إنجليزية..."></textarea>
-    <button onclick="smartTranslate()">ترجم النص الآن</button>
+    <textarea id="inputText" placeholder="ضع هنا نصاً إنجليزياً (مثل: good) واضغط ترجمة..."></textarea>
+    <button class="btn-translate" onclick="smartTranslate()">ترجم النص الآن</button>
 
     <div class="box-title">الترجمة البصرية (الرموز السرية):</div>
     <div id="symbolsOutput" class="output-box">...</div>
 
-    <div class="box-title">الترجمة النصية / النطق الصوتي المسموع:</div>
+    <div class="box-title">النطق الصوتي (اضغط على زر 🔊 للكلمة التي تريد سماعها):</div>
     <div id="englishOutput" class="output-box">...</div>
-
-    <span class="instruction">💡 تم دمج الاتجاهين! الموقع سيعرف تلقائياً نوع النص الذي أدخلته ويقوم بفك شفرته أو تشفيره بلحظتها.</span>
 </div>
 
 <script>
@@ -137,7 +147,6 @@ const zilusAlphabet = {
     'y': { symbol: '⊬', sound: 'جو' }, 'z': { symbol: '⋉', sound: 'زاد' }
 };
 
-// بناء قاموس الرموز مع تنظيف وتوحيد التشفير منعا لأخطاء النسخ
 const reverseSymbols = {};
 Object.keys(zilusAlphabet).forEach(key => {
     const sym = zilusAlphabet[key].symbol.trim();
@@ -154,7 +163,6 @@ function smartTranslate() {
         return;
     }
 
-    // فحص النص: هل يحتوي على أي من رموز زيلوس الفريدة؟
     let hasZilusSymbols = false;
     const sampleSymbols = Object.values(zilusAlphabet).map(item => item.symbol);
     for (let sym of sampleSymbols) {
@@ -165,9 +173,8 @@ function smartTranslate() {
     }
 
     if (hasZilusSymbols) {
-        // الاتجاه الأول: من رموز زيلوس إلى إنجليزية
+        // فك التشفير من الرموز للإنجليزية
         let englishResult = "";
-        // استخدام Array.from للتعامل الصحيح مع الرموز البرمجية المعقدة (Surrogate pairs) لكي لا تنقسم
         let charsArray = Array.from(input); 
 
         for (let i = 0; i < charsArray.length; i++) {
@@ -175,14 +182,14 @@ function smartTranslate() {
             if (reverseSymbols[char]) {
                 englishResult += reverseSymbols[char];
             } else {
-                englishResult += char; // ترك المسافات والأرقام والروابط كما هي
+                englishResult += char;
             }
         }
-        symbolsOutput.innerHTML = input; // إبقاء الرموز في خانتها
-        englishOutput.innerHTML = `<span style="color:var(--accent-color)">${englishResult.toUpperCase()}</span>`;
+        symbolsOutput.innerHTML = input;
+        englishOutput.innerHTML = `<span style="color:var(--accent-color); font-weight:bold; font-size:18px;">${englishResult.toUpperCase()}</span>`;
 
     } else {
-        // الاتجاه الثاني: من إنجليزية إلى رموز زيلوس + نطق
+        // التشفير من الإنجليزية إلى لغتك (مع أزرار النطق الجديدة)
         let lowerText = input.toLowerCase();
         let lines = lowerText.split("\n");
         let finalSymbolsLines = [];
@@ -215,9 +222,15 @@ function smartTranslate() {
                     }
                 }
                 lineSymbols.push(wordSymbols);
+                
                 if(wordSounds.length > 0) {
                     let wordSoundText = wordSounds.join("");
-                    lineHTML += `<span class="word-span" onclick="speakText('${wordSoundText}')">${wordSoundText}</span> `;
+                    // هنا بناء مربع الكلمة وبداخله زر النطق المخصص 🔊
+                    lineHTML += `
+                    <div class="word-block">
+                        <span class="word-text">${wordSoundText}</span>
+                        <button class="btn-speak" onclick="speakText('${wordSoundText}')">🔊 نطق</button>
+                    </div>`;
                 } else if(word.trim() !== "") {
                     lineHTML += `<span style="color:#8b949e; margin:0 4px;">${word}</span> `;
                 }
@@ -236,149 +249,10 @@ function speakText(text) {
         window.speechSynthesis.cancel();
         let utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = 'ar-SA'; 
-        utterance.rate = 0.8;    
+        utterance.rate = 0.75; // سرعة فخمة وموزونة لنطق القواعد الصعبة بوضوح
         window.speechSynthesis.speak(utterance);
     }
 }
 </script>
 </body>
 </html>
-<⎅⟟⎐ ☊⌰⏃⌇⌇="☊⍜⋏⏁⏃⟟⋏⟒⍀">
-    <⊑1>المترجم الذكي للغة زيلوس 🪐</⊑1>
-    <⌿ ☊⌰⏃⌇⌇="⌇⎍⏚⏁⟟⏁⌰⟒">نظام الترجمة التلقائية ثنائية الاتجاه (اكتب فقط واضغط ترجمة)</⌿>
-
-    <⏁⟒⌖⏁⏃⍀⟒⏃ ⟟⎅="⟟⋏⌿⎍⏁⏁⟒⌖⏁" ⌿⌰⏃☊⟒⊑⍜⌰⎅⟒⍀="ضع هنا نصاً إنجليزياً ليتحول إلى رموز، أو ضع الرموز لتتحول فوراً إلى إنجليزية..."></⏁⟒⌖⏁⏃⍀⟒⏃>
-    <⏚⎍⏁⏁⍜⋏ ⍜⋏☊⌰⟟☊☍="⌇⋔⏃⍀⏁⏁⍀⏃⋏⌇⌰⏃⏁⟒()">ترجم النص الآن</⏚⎍⏁⏁⍜⋏>
-
-    <⎅⟟⎐ ☊⌰⏃⌇⌇="⏚⍜⌖-⏁⟟⏁⌰⟒">الترجمة البصرية (الرموز السرية):</⎅⟟⎐>
-    <⎅⟟⎐ ⟟⎅="⌇⊬⋔⏚⍜⌰⌇⍜⎍⏁⌿⎍⏁" ☊⌰⏃⌇⌇="⍜⎍⏁⌿⎍⏁-⏚⍜⌖">...</⎅⟟⎐>
-
-    <⎅⟟⎐ ☊⌰⏃⌇⌇="⏚⍜⌖-⏁⟟⏁⌰⟒">الترجمة النصية / النطق الصوتي المسموع:</⎅⟟⎐>
-    <⎅⟟⎐ ⟟⎅="⟒⋏☌⌰⟟⌇⊑⍜⎍⏁⌿⎍⏁" ☊⌰⏃⌇⌇="⍜⎍⏁⌿⎍⏁-⏚⍜⌖">...</⎅⟟⎐>
-
-    <⌇⌿⏃⋏ ☊⌰⏃⌇⌇="⟟⋏⌇⏁⍀⎍☊⏁⟟⍜⋏">💡 تم دمج الاتجاهين! الموقع سيعرف تلقائياً نوع النص الذي أدخلته ويقوم بفك شفرته أو تشفيره بلحظتها.</⌇⌿⏃⋏>
-</⎅⟟⎐>
-
-<⌇☊⍀⟟⌿⏁>
-☊⍜⋏⌇⏁ ⋉⟟⌰⎍⌇⏃⌰⌿⊑⏃⏚⟒⏁ = {
-    '⏃': { ⌇⊬⋔⏚⍜⌰: '⏃', ⌇⍜⎍⋏⎅: 'سا' }, '⏚': { ⌇⊬⋔⏚⍜⌰: '⏚', ⌇⍜⎍⋏⎅: 'بارو' },
-    '☊': { ⌇⊬⋔⏚⍜⌰: '☊', ⌇⍜⎍⋏⎅: 'سن' }, '⎅': { ⌇⊬⋔⏚⍜⌰: '⎅', ⌇⍜⎍⋏⎅: 'دا' },
-    '⟒': { ⌇⊬⋔⏚⍜⌰: '⟒', ⌇⍜⎍⋏⎅: 'سي' }, '⎎': { ⌇⊬⋔⏚⍜⌰: '⎎', ⌇⍜⎍⋏⎅: 'يون' },
-    '☌': { ⌇⊬⋔⏚⍜⌰: '☌', ⌇⍜⎍⋏⎅: 'سين' }, '⊑': { ⌇⊬⋔⏚⍜⌰: '⊑', ⌇⍜⎍⋏⎅: 'هام' },
-    '⟟': { ⌇⊬⋔⏚⍜⌰: '⟟', ⌇⍜⎍⋏⎅: 'از' }, '⟊': { ⌇⊬⋔⏚⍜⌰: '⟊', ⌇⍜⎍⋏⎅: 'ام' },
-    '☍': { ⌇⊬⋔⏚⍜⌰: '☍', ⌇⍜⎍⋏⎅: 'نان' }, '⌰': { ⌇⊬⋔⏚⍜⌰: '⌰', ⌇⍜⎍⋏⎅: 'سير' },
-    '⋔': { ⌇⊬⋔⏚⍜⌰: '⋔', ⌇⍜⎍⋏⎅: 'مايري' }, '⋏': { ⌇⊬⋔⏚⍜⌰: '⋏', ⌇⍜⎍⋏⎅: 'ني' },
-    '⍜': { ⌇⊬⋔⏚⍜⌰: '⍜', ⌇⍜⎍⋏⎅: 'سو' }, '⌿': { ⌇⊬⋔⏚⍜⌰: '⌿', ⌇⍜⎍⋏⎅: 'ان' },
-    '⍾': { ⌇⊬⋔⏚⍜⌰: '⍾', ⌇⍜⎍⋏⎅: 'قو' }, '⍀': { ⌇⊬⋔⏚⍜⌰: '⍀', ⌇⍜⎍⋏⎅: 'نا' },
-    '⌇': { ⌇⊬⋔⏚⍜⌰: '⌇', ⌇⍜⎍⋏⎅: 'كي' }, '⏁': { ⌇⊬⋔⏚⍜⌰: '⏁', ⌇⍜⎍⋏⎅: 'هي' },
-    '⎍': { ⌇⊬⋔⏚⍜⌰: '⎍', ⌇⍜⎍⋏⎅: 'ماي' }, '⎐': { ⌇⊬⋔⏚⍜⌰: '⎐', ⌇⍜⎍⋏⎅: 'فاين' },
-    '⍙': { ⌇⊬⋔⏚⍜⌰: '⍙', ⌇⍜⎍⋏⎅: 'يو' }, '⌖': { ⌇⊬⋔⏚⍜⌰: '⌖', ⌇⍜⎍⋏⎅: 'اش' },
-    '⊬': { ⌇⊬⋔⏚⍜⌰: '⊬', ⌇⍜⎍⋏⎅: 'جو' }, '⋉': { ⌇⊬⋔⏚⍜⌰: '⋉', ⌇⍜⎍⋏⎅: 'زاد' }
-};
-
-// بناء قاموس الرموز مع تنظيف وتوحيد التشفير منعا لأخطاء النسخ
-☊⍜⋏⌇⏁ ⍀⟒⎐⟒⍀⌇⟒⌇⊬⋔⏚⍜⌰⌇ = {};
-⍜⏚⟊⟒☊⏁.☍⟒⊬⌇(⋉⟟⌰⎍⌇⏃⌰⌿⊑⏃⏚⟒⏁).⎎⍜⍀⟒⏃☊⊑(☍⟒⊬ => {
-    ☊⍜⋏⌇⏁ ⌇⊬⋔ = ⋉⟟⌰⎍⌇⏃⌰⌿⊑⏃⏚⟒⏁[☍⟒⊬].⌇⊬⋔⏚⍜⌰.⏁⍀⟟⋔();
-    ⍀⟒⎐⟒⍀⌇⟒⌇⊬⋔⏚⍜⌰⌇[⌇⊬⋔] = ☍⟒⊬;
-});
-
-⎎⎍⋏☊⏁⟟⍜⋏ ⌇⋔⏃⍀⏁⏁⍀⏃⋏⌇⌰⏃⏁⟒() {
-    ☊⍜⋏⌇⏁ ⟟⋏⌿⎍⏁ = ⎅⍜☊⎍⋔⟒⋏⏁.☌⟒⏁⟒⌰⟒⋔⟒⋏⏁⏚⊬⟟⎅("⟟⋏⌿⎍⏁⏁⟒⌖⏁").⎐⏃⌰⎍⟒;
-    ☊⍜⋏⌇⏁ ⌇⊬⋔⏚⍜⌰⌇⍜⎍⏁⌿⎍⏁ = ⎅⍜☊⎍⋔⟒⋏⏁.☌⟒⏁⟒⌰⟒⋔⟒⋏⏁⏚⊬⟟⎅("⌇⊬⋔⏚⍜⌰⌇⍜⎍⏁⌿⎍⏁");
-    ☊⍜⋏⌇⏁ ⟒⋏☌⌰⟟⌇⊑⍜⎍⏁⌿⎍⏁ = ⎅⍜☊⎍⋔⟒⋏⏁.☌⟒⏁⟒⌰⟒⋔⟒⋏⏁⏚⊬⟟⎅("⟒⋏☌⌰⟟⌇⊑⍜⎍⏁⌿⎍⏁");
-
-    ⟟⎎ (!⟟⋏⌿⎍⏁.⏁⍀⟟⋔()) {
-        ⏃⌰⟒⍀⏁("الرجاء إدخال نص أولاً!");
-        ⍀⟒⏁⎍⍀⋏;
-    }
-
-    // فحص النص: هل يحتوي على أي من رموز زيلوس الفريدة؟
-    ⌰⟒⏁ ⊑⏃⌇⋉⟟⌰⎍⌇⌇⊬⋔⏚⍜⌰⌇ = ⎎⏃⌰⌇⟒;
-    ☊⍜⋏⌇⏁ ⌇⏃⋔⌿⌰⟒⌇⊬⋔⏚⍜⌰⌇ = ⍜⏚⟊⟒☊⏁.⎐⏃⌰⎍⟒⌇(⋉⟟⌰⎍⌇⏃⌰⌿⊑⏃⏚⟒⏁).⋔⏃⌿(⟟⏁⟒⋔ => ⟟⏁⟒⋔.⌇⊬⋔⏚⍜⌰);
-    ⎎⍜⍀ (⌰⟒⏁ ⌇⊬⋔ ⍜⎎ ⌇⏃⋔⌿⌰⟒⌇⊬⋔⏚⍜⌰⌇) {
-        ⟟⎎ (⟟⋏⌿⎍⏁.⟟⋏☊⌰⎍⎅⟒⌇(⌇⊬⋔)) {
-            ⊑⏃⌇⋉⟟⌰⎍⌇⌇⊬⋔⏚⍜⌰⌇ = ⏁⍀⎍⟒;
-            ⏚⍀⟒⏃☍;
-        }
-    }
-
-    ⟟⎎ (⊑⏃⌇⋉⟟⌰⎍⌇⌇⊬⋔⏚⍜⌰⌇) {
-        // الاتجاه الأول: من رموز زيلوس إلى إنجليزية
-        ⌰⟒⏁ ⟒⋏☌⌰⟟⌇⊑⍀⟒⌇⎍⌰⏁ = "";
-        // استخدام ⏃⍀⍀⏃⊬.⎎⍀⍜⋔ للتعامل الصحيح مع الرموز البرمجية المعقدة (⌇⎍⍀⍀⍜☌⏃⏁⟒ ⌿⏃⟟⍀⌇) لكي لا تنقسم
-        ⌰⟒⏁ ☊⊑⏃⍀⌇⏃⍀⍀⏃⊬ = ⏃⍀⍀⏃⊬.⎎⍀⍜⋔(⟟⋏⌿⎍⏁); 
-
-        ⎎⍜⍀ (⌰⟒⏁ ⟟ = 0; ⟟ < ☊⊑⏃⍀⌇⏃⍀⍀⏃⊬.⌰⟒⋏☌⏁⊑; ⟟++) {
-            ⌰⟒⏁ ☊⊑⏃⍀ = ☊⊑⏃⍀⌇⏃⍀⍀⏃⊬[⟟];
-            ⟟⎎ (⍀⟒⎐⟒⍀⌇⟒⌇⊬⋔⏚⍜⌰⌇[☊⊑⏃⍀]) {
-                ⟒⋏☌⌰⟟⌇⊑⍀⟒⌇⎍⌰⏁ += ⍀⟒⎐⟒⍀⌇⟒⌇⊬⋔⏚⍜⌰⌇[☊⊑⏃⍀];
-            } ⟒⌰⌇⟒ {
-                ⟒⋏☌⌰⟟⌇⊑⍀⟒⌇⎍⌰⏁ += ☊⊑⏃⍀; // ترك المسافات والأرقام والروابط كما هي
-            }
-        }
-        ⌇⊬⋔⏚⍜⌰⌇⍜⎍⏁⌿⎍⏁.⟟⋏⋏⟒⍀⊑⏁⋔⌰ = ⟟⋏⌿⎍⏁; // إبقاء الرموز في خانتها
-        ⟒⋏☌⌰⟟⌇⊑⍜⎍⏁⌿⎍⏁.⟟⋏⋏⟒⍀⊑⏁⋔⌰ = `<⌇⌿⏃⋏ ⌇⏁⊬⌰⟒="☊⍜⌰⍜⍀:⎐⏃⍀(--⏃☊☊⟒⋏⏁-☊⍜⌰⍜⍀)">${⟒⋏☌⌰⟟⌇⊑⍀⟒⌇⎍⌰⏁.⏁⍜⎍⌿⌿⟒⍀☊⏃⌇⟒()}</⌇⌿⏃⋏>`;
-
-    } ⟒⌰⌇⟒ {
-        // الاتجاه الثاني: من إنجليزية إلى رموز زيلوس + نطق
-        ⌰⟒⏁ ⌰⍜⍙⟒⍀⏁⟒⌖⏁ = ⟟⋏⌿⎍⏁.⏁⍜⌰⍜⍙⟒⍀☊⏃⌇⟒();
-        ⌰⟒⏁ ⌰⟟⋏⟒⌇ = ⌰⍜⍙⟒⍀⏁⟒⌖⏁.⌇⌿⌰⟟⏁("\⋏");
-        ⌰⟒⏁ ⎎⟟⋏⏃⌰⌇⊬⋔⏚⍜⌰⌇⌰⟟⋏⟒⌇ = [];
-        ⌰⟒⏁ ⎎⟟⋏⏃⌰⊑⏁⋔⌰ = "";
-
-        ⌰⟟⋏⟒⌇.⎎⍜⍀⟒⏃☊⊑(⌰⟟⋏⟒ => {
-            ⌰⟒⏁ ⍙⍜⍀⎅⌇ = ⌰⟟⋏⟒.⌇⌿⌰⟟⏁(" ");
-            ⌰⟒⏁ ⌰⟟⋏⟒⌇⊬⋔⏚⍜⌰⌇ = [];
-            ⌰⟒⏁ ⌰⟟⋏⟒⊑⏁⋔⌰ = "";
-
-            ⍙⍜⍀⎅⌇.⎎⍜⍀⟒⏃☊⊑(⍙⍜⍀⎅ => {
-                ⌰⟒⏁ ⍙⍜⍀⎅⌇⊬⋔⏚⍜⌰⌇ = "";
-                ⌰⟒⏁ ⍙⍜⍀⎅⌇⍜⎍⋏⎅⌇ = [];
-
-                ⎎⍜⍀ (⌰⟒⏁ ⟟ = 0; ⟟ < ⍙⍜⍀⎅.⌰⟒⋏☌⏁⊑; ⟟++) {
-                    ⌰⟒⏁ ☊⊑⏃⍀ = ⍙⍜⍀⎅[⟟];
-                    ⌰⟒⏁ ⋏⟒⌖⏁☊⊑⏃⍀ = ⍙⍜⍀⎅[⟟ + 1];
-
-                    ⟟⎎ (⋉⟟⌰⎍⌇⏃⌰⌿⊑⏃⏚⟒⏁[☊⊑⏃⍀]) {
-                        ⍙⍜⍀⎅⌇⊬⋔⏚⍜⌰⌇ += ⋉⟟⌰⎍⌇⏃⌰⌿⊑⏃⏚⟒⏁[☊⊑⏃⍀].⌇⊬⋔⏚⍜⌰;
-                        ⟟⎎ (☊⊑⏃⍀ === ⋏⟒⌖⏁☊⊑⏃⍀) {
-                            ⍙⍜⍀⎅⌇⍜⎍⋏⎅⌇.⌿⎍⌇⊑("سس");
-                            ⍙⍜⍀⎅⌇⊬⋔⏚⍜⌰⌇ += ⋉⟟⌰⎍⌇⏃⌰⌿⊑⏃⏚⟒⏁[☊⊑⏃⍀].⌇⊬⋔⏚⍜⌰;
-                            ⟟++; 
-                        } ⟒⌰⌇⟒ {
-                            ⍙⍜⍀⎅⌇⍜⎍⋏⎅⌇.⌿⎍⌇⊑(⋉⟟⌰⎍⌇⏃⌰⌿⊑⏃⏚⟒⏁[☊⊑⏃⍀].⌇⍜⎍⋏⎅);
-                        }
-                    } ⟒⌰⌇⟒ {
-                        ⍙⍜⍀⎅⌇⊬⋔⏚⍜⌰⌇ += ☊⊑⏃⍀;
-                    }
-                }
-                ⌰⟟⋏⟒⌇⊬⋔⏚⍜⌰⌇.⌿⎍⌇⊑(⍙⍜⍀⎅⌇⊬⋔⏚⍜⌰⌇);
-                ⟟⎎(⍙⍜⍀⎅⌇⍜⎍⋏⎅⌇.⌰⟒⋏☌⏁⊑ > 0) {
-                    ⌰⟒⏁ ⍙⍜⍀⎅⌇⍜⎍⋏⎅⏁⟒⌖⏁ = ⍙⍜⍀⎅⌇⍜⎍⋏⎅⌇.⟊⍜⟟⋏("");
-                    ⌰⟟⋏⟒⊑⏁⋔⌰ += `<⌇⌿⏃⋏ ☊⌰⏃⌇⌇="⍙⍜⍀⎅-⌇⌿⏃⋏" ⍜⋏☊⌰⟟☊☍="⌇⌿⟒⏃☍⏁⟒⌖⏁('${⍙⍜⍀⎅⌇⍜⎍⋏⎅⏁⟒⌖⏁}')">${⍙⍜⍀⎅⌇⍜⎍⋏⎅⏁⟒⌖⏁}</⌇⌿⏃⋏> `;
-                } ⟒⌰⌇⟒ ⟟⎎(⍙⍜⍀⎅.⏁⍀⟟⋔() !== "") {
-                    ⌰⟟⋏⟒⊑⏁⋔⌰ += `<⌇⌿⏃⋏ ⌇⏁⊬⌰⟒="☊⍜⌰⍜⍀:#8⏚949⟒; ⋔⏃⍀☌⟟⋏:0 4⌿⌖;">${⍙⍜⍀⎅}</⌇⌿⏃⋏> `;
-                }
-            });
-            ⎎⟟⋏⏃⌰⌇⊬⋔⏚⍜⌰⌇⌰⟟⋏⟒⌇.⌿⎍⌇⊑(⌰⟟⋏⟒⌇⊬⋔⏚⍜⌰⌇.⟊⍜⟟⋏(" "));
-            ⎎⟟⋏⏃⌰⊑⏁⋔⌰ += `<⎅⟟⎐>${⌰⟟⋏⟒⊑⏁⋔⌰}</⎅⟟⎐>`;
-        });
-
-        ⌇⊬⋔⏚⍜⌰⌇⍜⎍⏁⌿⎍⏁.⟟⋏⋏⟒⍀⊑⏁⋔⌰ = ⎎⟟⋏⏃⌰⌇⊬⋔⏚⍜⌰⌇⌰⟟⋏⟒⌇.⟊⍜⟟⋏("\⋏");
-        ⟒⋏☌⌰⟟⌇⊑⍜⎍⏁⌿⎍⏁.⟟⋏⋏⟒⍀⊑⏁⋔⌰ = ⎎⟟⋏⏃⌰⊑⏁⋔⌰;
-    }
-}
-
-⎎⎍⋏☊⏁⟟⍜⋏ ⌇⌿⟒⏃☍⏁⟒⌖⏁(⏁⟒⌖⏁) {
-    ⟟⎎ ('⌇⌿⟒⟒☊⊑⌇⊬⋏⏁⊑⟒⌇⟟⌇' ⟟⋏ ⍙⟟⋏⎅⍜⍙) {
-        ⍙⟟⋏⎅⍜⍙.⌇⌿⟒⟒☊⊑⌇⊬⋏⏁⊑⟒⌇⟟⌇.☊⏃⋏☊⟒⌰();
-        ⌰⟒⏁ ⎍⏁⏁⟒⍀⏃⋏☊⟒ = ⋏⟒⍙ ⌇⌿⟒⟒☊⊑⌇⊬⋏⏁⊑⟒⌇⟟⌇⎍⏁⏁⟒⍀⏃⋏☊⟒(⏁⟒⌖⏁);
-        ⎍⏁⏁⟒⍀⏃⋏☊⟒.⌰⏃⋏☌ = '⏃⍀-⌇⏃'; 
-        ⎍⏁⏁⟒⍀⏃⋏☊⟒.⍀⏃⏁⟒ = 0.8;    
-        ⍙⟟⋏⎅⍜⍙.⌇⌿⟒⟒☊⊑⌇⊬⋏⏁⊑⟒⌇⟟⌇.⌇⌿⟒⏃☍(⎍⏁⏁⟒⍀⏃⋏☊⟒);
-    }
-}
-</⌇☊⍀⟟⌿⏁>
-</⏚⍜⎅⊬>
-</⊑⏁⋔⌰>
