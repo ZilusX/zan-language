@@ -72,7 +72,6 @@
             margin-bottom: 15px;
             word-wrap: break-word;
         }
-        /* تصميم الكلمات القابلة للضغط والنطق */
         .word-span {
             display: inline-block;
             margin: 0 4px;
@@ -105,7 +104,7 @@
     <label for="translationDirection">اختر نوع الترجمة:</label>
     <select id="translationDirection">
         <option value="en-to-zilus">من الإنجليزية إلى لغة زيلوس (رموز ونطق)</option>
-        <option value="zilus-to-en">من لغة زيلوس (رموز) إلى الإنجليزية/العربية</option>
+        <option value="zilus-to-en">من لغة زيلوس (رموز) إلى الإنجليزية</option>
     </select>
 
     <textarea id="inputText" placeholder="اكتب نصك هنا..."></textarea>
@@ -114,11 +113,116 @@
     <div class="output-box">
         <div id="symbolsOutput" class="result-symbols">الرموز ستظهر هنا...</div>
         <div id="soundsOutput">النطق الصوتي سيظهر هنا (كلمات قابلة للضغط)...</div>
-        <span class="audio-instruction">💡 اضغط ضغطة عادية (أو مطولة) على الكلمة لنطقها وحدها، أو اضغط على الزر لتشغيل النص كامل.</span>
+        <span class="audio-instruction">💡 اضغط على الكلمة لنطقها وحدها، أو اضغط على الزر الأخضر لنطق الجملة كاملة.</span>
     </div>
 </div>
 
-<script src="app.js"></script>
+<script>
+// القاموس المعتمد للغة زيلوس
+const zilusAlphabet = {
+    'a': { symbol: '⏃', sound: 'سا' }, 'b': { symbol: '⏚', sound: 'بارو' },
+    'c': { symbol: '☊', sound: 'سن' }, 'd': { symbol: '⎅', sound: 'دا' },
+    'e': { symbol: '⟒', sound: 'سي' }, 'f': { symbol: '⎎', sound: 'يون' },
+    'g': { symbol: '☌', sound: 'سين' }, 'h': { symbol: '⊑', sound: 'هام' },
+    'i': { symbol: '⟟', sound: 'از' }, 'j': { symbol: '⟊', sound: 'ام' },
+    'k': { symbol: '☍', sound: 'نان' }, 'l': { symbol: '⌰', sound: 'سير' },
+    'm': { symbol: '⋔', sound: 'مايري' }, 'n': { symbol: '⋏', sound: 'ني' },
+    'o': { symbol: '⍜', sound: 'سو' }, 'p': { symbol: '⌿', sound: 'ان' },
+    'q': { symbol: '⍾', sound: 'قو' }, 'r': { symbol: '⍀', sound: 'نا' },
+    's': { symbol: '⌇', sound: 'كي' }, 't': { symbol: '⏁', sound: 'هي' },
+    'u': { symbol: '⎍', sound: 'ماي' }, 'v': { symbol: '⎐', sound: 'فاين' },
+    'w': { symbol: '⍙', sound: 'يو' }, 'x': { symbol: '⌖', sound: 'اش' },
+    'y': { symbol: '⊬', sound: 'جو' }, 'z': { symbol: '⋉', sound: 'زاد' }
+};
+
+// إنشاء قاموس عكسي للترجمة من الرموز
+const reverseSymbols = {};
+Object.keys(zilusAlphabet).forEach(key => {
+    reverseSymbols[zilusAlphabet[key].symbol] = key;
+});
+
+function handleTranslation() {
+    const direction = document.getElementById("translationDirection").value;
+    const input = document.getElementById("inputText").value.trim();
+    const symbolsOutput = document.getElementById("symbolsOutput");
+    const soundsOutput = document.getElementById("soundsOutput");
+
+    if (!input) {
+        alert("الرجاء كتابة نص أولاً!");
+        return;
+    }
+
+    if (direction === "en-to-zilus") {
+        let lowerText = input.toLowerCase();
+        let currentWords = lowerText.split(" ");
+        
+        let finalSymbols = "";
+        let finalSoundsHTML = "";
+        let fullSentenceSounds = [];
+
+        currentWords.forEach(word => {
+            let wordSymbols = "";
+            let wordSounds = [];
+
+            for (let i = 0; i < word.length; i++) {
+                let char = word[i];
+                let nextChar = word[i + 1];
+
+                if (zilusAlphabet[char]) {
+                    wordSymbols += zilusAlphabet[char].symbol;
+
+                    if (char === nextChar) {
+                        wordSounds.push("سس");
+                        wordSymbols += zilusAlphabet[char].symbol;
+                        i++; 
+                    } else {
+                        wordSounds.push(zilusAlphabet[char].sound);
+                    }
+                } else {
+                    wordSymbols += char;
+                }
+            }
+
+            let wordSoundText = wordSounds.join("");
+            finalSymbols += wordSymbols + " ";
+            fullSentenceSounds.push(wordSoundText);
+
+            finalSoundsHTML += `<span class="word-span" onclick="speakText('${wordSoundText}')">${wordSoundText}</span> `;
+        });
+
+        symbolsOutput.innerHTML = finalSymbols;
+        let fullSentenceString = fullSentenceSounds.join(" ");
+        soundsOutput.innerHTML = `<div>${finalSoundsHTML}</div><button style="margin-top:10px; padding:8px; background:#7ee787; color:#0d1117; width:auto; font-size:13px; font-weight:bold;" onclick="speakText('${fullSentenceString}')">🗣️ نطق الجملة كاملة</button>`;
+
+    } else {
+        let englishResult = "";
+        for (let i = 0; i < input.length; i++) {
+            let char = input[i];
+            if (char === " ") {
+                englishResult += " ";
+            } else if (reverseSymbols[char]) {
+                englishResult += reverseSymbols[char];
+            } else {
+                englishResult += char;
+            }
+        }
+        symbolsOutput.innerHTML = input; 
+        soundsOutput.innerHTML = `<span style="color:#fff; font-size:18px;">النص المترجم: <b style="color:var(--accent-color)">${englishResult.toUpperCase()}</b></span>`;
+    }
+}
+
+function speakText(text) {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        let utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'ar-SA'; 
+        utterance.rate = 0.8;    
+        window.speechSynthesis.speak(utterance);
+    } else {
+        alert("متصفحك لا يدعم نظام النطق الصوتي.");
+    }
+}
+</script>
 </body>
 </html>
 
