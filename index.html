@@ -1,232 +1,245 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zilus Translator & Voice System - Ultimate</title>
-    <style>
-        :root {
-            --bg-color: #0d1117;
-            --panel-bg: #161b22;
-            --accent-color: #58a6ff;
-            --text-color: #c9d1d9;
-            --neon-green: #7ee787;
+<!⎅⍜☊⏁⊬⌿⟒ ⊑⏁⋔⌰>
+<⊑⏁⋔⌰ ⌰⏃⋏☌="⏃⍀" ⎅⟟⍀="⍀⏁⌰">
+<⊑⟒⏃⎅>
+    <⋔⟒⏁⏃ ☊⊑⏃⍀⌇⟒⏁="⎍⏁⎎-8">
+    <⋔⟒⏁⏃ ⋏⏃⋔⟒="⎐⟟⟒⍙⌿⍜⍀⏁" ☊⍜⋏⏁⟒⋏⏁="⍙⟟⎅⏁⊑=⎅⟒⎐⟟☊⟒-⍙⟟⎅⏁⊑, ⟟⋏⟟⏁⟟⏃⌰-⌇☊⏃⌰⟒=1.0">
+    <⏁⟟⏁⌰⟒>⋉⟟⌰⎍⌇ ⌇⋔⏃⍀⏁ ⏁⍀⏃⋏⌇⌰⏃⏁⍜⍀ 🪐</⏁⟟⏁⌰⟒>
+    <⌇⏁⊬⌰⟒>
+        :⍀⍜⍜⏁ {
+            --⏚☌-☊⍜⌰⍜⍀: #0⎅1117;
+            --⌿⏃⋏⟒⌰-⏚☌: #161⏚22;
+            --⏃☊☊⟒⋏⏁-☊⍜⌰⍜⍀: #58⏃6⎎⎎;
+            --⏁⟒⌖⏁-☊⍜⌰⍜⍀: #☊9⎅1⎅9;
+            --⋏⟒⍜⋏-☌⍀⟒⟒⋏: #7⟒⟒787;
         }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 20px;
-            text-align: center;
+        ⏚⍜⎅⊬ {
+            ⎎⍜⋏⏁-⎎⏃⋔⟟⌰⊬: '⌇⟒☌⍜⟒ ⎍⟟', ⏁⏃⊑⍜⋔⏃, ☌⟒⋏⟒⎐⏃, ⎐⟒⍀⎅⏃⋏⏃, ⌇⏃⋏⌇-⌇⟒⍀⟟⎎;
+            ⏚⏃☊☍☌⍀⍜⎍⋏⎅-☊⍜⌰⍜⍀: ⎐⏃⍀(--⏚☌-☊⍜⌰⍜⍀);
+            ☊⍜⌰⍜⍀: ⎐⏃⍀(--⏁⟒⌖⏁-☊⍜⌰⍜⍀);
+            ⋔⏃⍀☌⟟⋏: 0;
+            ⌿⏃⎅⎅⟟⋏☌: 20⌿⌖;
+            ⏁⟒⌖⏁-⏃⌰⟟☌⋏: ☊⟒⋏⏁⟒⍀;
         }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--panel-bg);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(88, 166, 255, 0.2);
-            border: 1px solid #21262d;
+        .☊⍜⋏⏁⏃⟟⋏⟒⍀ {
+            ⋔⏃⌖-⍙⟟⎅⏁⊑: 850⌿⌖;
+            ⋔⏃⍀☌⟟⋏: 0 ⏃⎍⏁⍜;
+            ⏚⏃☊☍☌⍀⍜⎍⋏⎅: ⎐⏃⍀(--⌿⏃⋏⟒⌰-⏚☌);
+            ⌿⏃⎅⎅⟟⋏☌: 30⌿⌖;
+            ⏚⍜⍀⎅⟒⍀-⍀⏃⎅⟟⎍⌇: 12⌿⌖;
+            ⏚⍜⌖-⌇⊑⏃⎅⍜⍙: 0 0 20⌿⌖ ⍀☌⏚⏃(88, 166, 255, 0.2);
+            ⏚⍜⍀⎅⟒⍀: 1⌿⌖ ⌇⍜⌰⟟⎅ #21262⎅;
         }
-        h1 { color: var(--accent-color); margin-bottom: 5px; }
-        p.subtitle { color: #8b949e; font-size: 14px; margin-bottom: 30px; }
-        select, textarea {
-            width: 100%;
-            padding: 12px;
-            background: #21262d;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            color: #fff;
-            font-size: 16px;
-            box-sizing: border-box;
-            margin-bottom: 15px;
+        ⊑1 { ☊⍜⌰⍜⍀: ⎐⏃⍀(--⏃☊☊⟒⋏⏁-☊⍜⌰⍜⍀); ⋔⏃⍀☌⟟⋏-⏚⍜⏁⏁⍜⋔: 5⌿⌖; }
+        ⌿.⌇⎍⏚⏁⟟⏁⌰⟒ { ☊⍜⌰⍜⍀: #8⏚949⟒; ⎎⍜⋏⏁-⌇⟟⋉⟒: 14⌿⌖; ⋔⏃⍀☌⟟⋏-⏚⍜⏁⏁⍜⋔: 25⌿⌖; }
+        ⏁⟒⌖⏁⏃⍀⟒⏃ {
+            ⍙⟟⎅⏁⊑: 100%;
+            ⊑⟒⟟☌⊑⏁: 140⌿⌖;
+            ⌿⏃⎅⎅⟟⋏☌: 12⌿⌖;
+            ⏚⏃☊☍☌⍀⍜⎍⋏⎅: #21262⎅;
+            ⏚⍜⍀⎅⟒⍀: 1⌿⌖ ⌇⍜⌰⟟⎅ #30363⎅;
+            ⏚⍜⍀⎅⟒⍀-⍀⏃⎅⟟⎍⌇: 6⌿⌖;
+            ☊⍜⌰⍜⍀: #⎎⎎⎎;
+            ⎎⍜⋏⏁-⌇⟟⋉⟒: 16⌿⌖;
+            ⏚⍜⌖-⌇⟟⋉⟟⋏☌: ⏚⍜⍀⎅⟒⍀-⏚⍜⌖;
+            ⋔⏃⍀☌⟟⋏-⏚⍜⏁⏁⍜⋔: 15⌿⌖;
+            ⍀⟒⌇⟟⋉⟒: ⋏⍜⋏⟒;
+            ⎅⟟⍀⟒☊⏁⟟⍜⋏: ⌰⏁⍀;
+            ⏁⟒⌖⏁-⏃⌰⟟☌⋏: ⌰⟒⎎⏁;
         }
-        textarea { height: 150px; resize: none; text-align: left; direction: ltr; }
-        button {
-            background-color: var(--accent-color);
-            color: #fff;
-            border: none;
-            padding: 14px 24px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-            width: 100%;
-            transition: 0.3s;
+        ⏚⎍⏁⏁⍜⋏ {
+            ⏚⏃☊☍☌⍀⍜⎍⋏⎅-☊⍜⌰⍜⍀: ⎐⏃⍀(--⏃☊☊⟒⋏⏁-☊⍜⌰⍜⍀);
+            ☊⍜⌰⍜⍀: #⎎⎎⎎;
+            ⏚⍜⍀⎅⟒⍀: ⋏⍜⋏⟒;
+            ⌿⏃⎅⎅⟟⋏☌: 14⌿⌖ 24⌿⌖;
+            ⎎⍜⋏⏁-⌇⟟⋉⟒: 16⌿⌖;
+            ⎎⍜⋏⏁-⍙⟒⟟☌⊑⏁: ⏚⍜⌰⎅;
+            ⏚⍜⍀⎅⟒⍀-⍀⏃⎅⟟⎍⌇: 6⌿⌖;
+            ☊⎍⍀⌇⍜⍀: ⌿⍜⟟⋏⏁⟒⍀;
+            ⍙⟟⎅⏁⊑: 100%;
+            ⏁⍀⏃⋏⌇⟟⏁⟟⍜⋏: 0.3⌇;
         }
-        button:hover { background-color: #1f6feb; }
-        .output-box {
-            margin-top: 25px;
-            background: #0d1117;
-            border: 1px dashed var(--accent-color);
-            padding: 20px;
-            border-radius: 8px;
-            text-align: left;
-            direction: ltr;
-            min-height: 80px;
+        ⏚⎍⏁⏁⍜⋏:⊑⍜⎐⟒⍀ { ⏚⏃☊☍☌⍀⍜⎍⋏⎅-☊⍜⌰⍜⍀: #1⎎6⎎⟒⏚; }
+        .⏚⍜⌖-⏁⟟⏁⌰⟒ {
+            ⏁⟒⌖⏁-⏃⌰⟟☌⋏: ⍀⟟☌⊑⏁;
+            ⎎⍜⋏⏁-⌇⟟⋉⟒: 14⌿⌖;
+            ☊⍜⌰⍜⍀: ⎐⏃⍀(--⏃☊☊⟒⋏⏁-☊⍜⌰⍜⍀);
+            ⋔⏃⍀☌⟟⋏-⏁⍜⌿: 20⌿⌖;
+            ⋔⏃⍀☌⟟⋏-⏚⍜⏁⏁⍜⋔: 5⌿⌖;
+            ⎎⍜⋏⏁-⍙⟒⟟☌⊑⏁: ⏚⍜⌰⎅;
         }
-        .result-symbols {
-            font-size: 20px;
-            letter-spacing: 1px;
-            color: var(--neon-green);
-            margin-bottom: 15px;
-            word-wrap: break-word;
-            white-space: pre-wrap;
+        .⍜⎍⏁⌿⎍⏁-⏚⍜⌖ {
+            ⏚⏃☊☍☌⍀⍜⎍⋏⎅: #0⎅1117;
+            ⏚⍜⍀⎅⟒⍀: 1⌿⌖ ⌇⍜⌰⟟⎅ #30363⎅;
+            ⌿⏃⎅⎅⟟⋏☌: 15⌿⌖;
+            ⏚⍜⍀⎅⟒⍀-⍀⏃⎅⟟⎍⌇: 6⌿⌖;
+            ⏁⟒⌖⏁-⏃⌰⟟☌⋏: ⌰⟒⎎⏁;
+            ⎅⟟⍀⟒☊⏁⟟⍜⋏: ⌰⏁⍀;
+            ⋔⟟⋏-⊑⟒⟟☌⊑⏁: 50⌿⌖;
+            ⎎⍜⋏⏁-⎎⏃⋔⟟⌰⊬: ⋔⍜⋏⍜⌇⌿⏃☊⟒;
+            ⍙⍜⍀⎅-⍙⍀⏃⌿: ⏚⍀⟒⏃☍-⍙⍜⍀⎅;
+            ⍙⊑⟟⏁⟒-⌇⌿⏃☊⟒: ⌿⍀⟒-⍙⍀⏃⌿;
         }
-        .word-span {
-            display: inline-block;
-            margin: 2px 4px;
-            padding: 2px 6px;
-            border-radius: 4px;
-            background: #21262d;
-            cursor: pointer;
-            user-select: none;
-            transition: 0.2s;
-            border: 1px solid #30363d;
-            color: #fff;
+        #⌇⊬⋔⏚⍜⌰⌇⍜⎍⏁⌿⎍⏁ { ⎎⍜⋏⏁-⌇⟟⋉⟒: 22⌿⌖; ☊⍜⌰⍜⍀: ⎐⏃⍀(--⋏⟒⍜⋏-☌⍀⟒⟒⋏); ⌰⟒⏁⏁⟒⍀-⌇⌿⏃☊⟟⋏☌: 1⌿⌖; }
+        #⟒⋏☌⌰⟟⌇⊑⍜⎍⏁⌿⎍⏁ { ⎎⍜⋏⏁-⌇⟟⋉⟒: 18⌿⌖; ☊⍜⌰⍜⍀: #⎎⎎⎎; ⎎⍜⋏⏁-⍙⟒⟟☌⊑⏁: ⏚⍜⌰⎅; }
+        .⍙⍜⍀⎅-⌇⌿⏃⋏ {
+            ⎅⟟⌇⌿⌰⏃⊬: ⟟⋏⌰⟟⋏⟒-⏚⌰⍜☊☍;
+            ⋔⏃⍀☌⟟⋏: 2⌿⌖ 4⌿⌖;
+            ⌿⏃⎅⎅⟟⋏☌: 2⌿⌖ 6⌿⌖;
+            ⏚⍜⍀⎅⟒⍀-⍀⏃⎅⟟⎍⌇: 4⌿⌖;
+            ⏚⏃☊☍☌⍀⍜⎍⋏⎅: #21262⎅;
+            ☊⎍⍀⌇⍜⍀: ⌿⍜⟟⋏⏁⟒⍀;
+            ⎍⌇⟒⍀-⌇⟒⌰⟒☊⏁: ⋏⍜⋏⟒;
+            ⏚⍜⍀⎅⟒⍀: 1⌿⌖ ⌇⍜⌰⟟⎅ #30363⎅;
         }
-        .word-span:hover {
-            background: var(--accent-color);
-            color: #fff;
+        .⍙⍜⍀⎅-⌇⌿⏃⋏:⊑⍜⎐⟒⍀ { ⏚⏃☊☍☌⍀⍜⎍⋏⎅: ⎐⏃⍀(--⏃☊☊⟒⋏⏁-☊⍜⌰⍜⍀); }
+        .⟟⋏⌇⏁⍀⎍☊⏁⟟⍜⋏ {
+            ⎎⍜⋏⏁-⌇⟟⋉⟒: 12⌿⌖;
+            ☊⍜⌰⍜⍀: #8⏚949⟒;
+            ⎅⟟⌇⌿⌰⏃⊬: ⏚⌰⍜☊☍;
+            ⋔⏃⍀☌⟟⋏-⏁⍜⌿: 15⌿⌖;
+            ⏁⟒⌖⏁-⏃⌰⟟☌⋏: ⍀⟟☌⊑⏁;
+            ⎅⟟⍀⟒☊⏁⟟⍜⋏: ⍀⏁⌰;
         }
-        .audio-instruction {
-            font-size: 12px;
-            color: #8b949e;
-            margin-top: 15px;
-            display: block;
-            text-align: right;
-            direction: rtl;
-        }
-    </style>
-</head>
-<body>
+    </⌇⏁⊬⌰⟒>
+</⊑⟒⏃⎅>
+<⏚⍜⎅⊬>
 
-<div class="container">
-    <h1>مترجم لغة زيلوس السرية 🪐</h1>
-    <p class="subtitle">الإصدار المطور والمقاوم للنصوص البرمجية الكبيرة</p>
+<⎅⟟⎐ ☊⌰⏃⌇⌇="☊⍜⋏⏁⏃⟟⋏⟒⍀">
+    <⊑1>المترجم الذكي للغة زيلوس 🪐</⊑1>
+    <⌿ ☊⌰⏃⌇⌇="⌇⎍⏚⏁⟟⏁⌰⟒">نظام الترجمة التلقائية ثنائية الاتجاه (اكتب فقط واضغط ترجمة)</⌿>
 
-    <label for="translationDirection" style="display:block; text-align:right; margin-bottom:5px;">اختر اتجاه الترجمة:</label>
-    <select id="translationDirection" dir="rtl">
-        <option value="zilus-to-en">من لغة زيلوس (رموز) إلى الإنجليزية العادية</option>
-        <option value="en-to-zilus">من الإنجليزية إلى لغة زيلوس (رموز ونطق)</option>
-    </select>
+    <⏁⟒⌖⏁⏃⍀⟒⏃ ⟟⎅="⟟⋏⌿⎍⏁⏁⟒⌖⏁" ⌿⌰⏃☊⟒⊑⍜⌰⎅⟒⍀="ضع هنا نصاً إنجليزياً ليتحول إلى رموز، أو ضع الرموز لتتحول فوراً إلى إنجليزية..."></⏁⟒⌖⏁⏃⍀⟒⏃>
+    <⏚⎍⏁⏁⍜⋏ ⍜⋏☊⌰⟟☊☍="⌇⋔⏃⍀⏁⏁⍀⏃⋏⌇⌰⏃⏁⟒()">ترجم النص الآن</⏚⎍⏁⏁⍜⋏>
 
-    <textarea id="inputText" placeholder="ضع النص هنا..."></textarea>
-    <button onclick="handleTranslation()">ترجم النص الآن</button>
+    <⎅⟟⎐ ☊⌰⏃⌇⌇="⏚⍜⌖-⏁⟟⏁⌰⟒">الترجمة البصرية (الرموز السرية):</⎅⟟⎐>
+    <⎅⟟⎐ ⟟⎅="⌇⊬⋔⏚⍜⌰⌇⍜⎍⏁⌿⎍⏁" ☊⌰⏃⌇⌇="⍜⎍⏁⌿⎍⏁-⏚⍜⌖">...</⎅⟟⎐>
 
-    <div class="output-box">
-        <div id="symbolsOutput" class="result-symbols">النتيجة ستظهر هنا...</div>
-        <div id="soundsOutput" style="color: #c9d1d9; font-size: 16px; white-space: pre-wrap;"></div>
-        <span class="audio-instruction">💡 إذا ترجمت من الإنجليزية، يمكنك الضغط على الكلمات المسموعة بالأسفل لنطقها!</span>
-    </div>
-</div>
+    <⎅⟟⎐ ☊⌰⏃⌇⌇="⏚⍜⌖-⏁⟟⏁⌰⟒">الترجمة النصية / النطق الصوتي المسموع:</⎅⟟⎐>
+    <⎅⟟⎐ ⟟⎅="⟒⋏☌⌰⟟⌇⊑⍜⎍⏁⌿⎍⏁" ☊⌰⏃⌇⌇="⍜⎍⏁⌿⎍⏁-⏚⍜⌖">...</⎅⟟⎐>
 
-<script>
-const zilusAlphabet = {
-    'a': { symbol: '⏃', sound: 'سا' }, 'b': { symbol: '⏚', sound: 'بارو' },
-    'c': { symbol: '☊', sound: 'سن' }, 'd': { symbol: '⎅', sound: 'دا' },
-    'e': { symbol: '⟒', sound: 'سي' }, 'f': { symbol: '⎎', sound: 'يون' },
-    'g': { symbol: '☌', sound: 'سين' }, 'h': { symbol: '⊑', sound: 'هام' },
-    'i': { symbol: '⟟', sound: 'از' }, 'j': { symbol: '⟊', sound: 'ام' },
-    'k': { symbol: '☍', sound: 'نان' }, 'l': { symbol: '⌰', sound: 'سير' },
-    'm': { symbol: '⋔', sound: 'مايري' }, 'n': { symbol: '⋏', sound: 'ني' },
-    'o': { symbol: '⍜', sound: 'سو' }, 'p': { symbol: '⌿', sound: 'ان' },
-    'q': { symbol: '⍾', sound: 'قو' }, 'r': { symbol: '⍀', sound: 'نا' },
-    's': { symbol: '⌇', sound: 'كي' }, 't': { symbol: '⏁', sound: 'هي' },
-    'u': { symbol: '⎍', sound: 'ماي' }, 'v': { symbol: '⎐', sound: 'فاين' },
-    'w': { symbol: '⍙', sound: 'يو' }, 'x': { symbol: '⌖', sound: 'اش' },
-    'y': { symbol: '⊬', sound: 'جو' }, 'z': { symbol: '⋉', sound: 'زاد' }
+    <⌇⌿⏃⋏ ☊⌰⏃⌇⌇="⟟⋏⌇⏁⍀⎍☊⏁⟟⍜⋏">💡 تم دمج الاتجاهين! الموقع سيعرف تلقائياً نوع النص الذي أدخلته ويقوم بفك شفرته أو تشفيره بلحظتها.</⌇⌿⏃⋏>
+</⎅⟟⎐>
+
+<⌇☊⍀⟟⌿⏁>
+☊⍜⋏⌇⏁ ⋉⟟⌰⎍⌇⏃⌰⌿⊑⏃⏚⟒⏁ = {
+    '⏃': { ⌇⊬⋔⏚⍜⌰: '⏃', ⌇⍜⎍⋏⎅: 'سا' }, '⏚': { ⌇⊬⋔⏚⍜⌰: '⏚', ⌇⍜⎍⋏⎅: 'بارو' },
+    '☊': { ⌇⊬⋔⏚⍜⌰: '☊', ⌇⍜⎍⋏⎅: 'سن' }, '⎅': { ⌇⊬⋔⏚⍜⌰: '⎅', ⌇⍜⎍⋏⎅: 'دا' },
+    '⟒': { ⌇⊬⋔⏚⍜⌰: '⟒', ⌇⍜⎍⋏⎅: 'سي' }, '⎎': { ⌇⊬⋔⏚⍜⌰: '⎎', ⌇⍜⎍⋏⎅: 'يون' },
+    '☌': { ⌇⊬⋔⏚⍜⌰: '☌', ⌇⍜⎍⋏⎅: 'سين' }, '⊑': { ⌇⊬⋔⏚⍜⌰: '⊑', ⌇⍜⎍⋏⎅: 'هام' },
+    '⟟': { ⌇⊬⋔⏚⍜⌰: '⟟', ⌇⍜⎍⋏⎅: 'از' }, '⟊': { ⌇⊬⋔⏚⍜⌰: '⟊', ⌇⍜⎍⋏⎅: 'ام' },
+    '☍': { ⌇⊬⋔⏚⍜⌰: '☍', ⌇⍜⎍⋏⎅: 'نان' }, '⌰': { ⌇⊬⋔⏚⍜⌰: '⌰', ⌇⍜⎍⋏⎅: 'سير' },
+    '⋔': { ⌇⊬⋔⏚⍜⌰: '⋔', ⌇⍜⎍⋏⎅: 'مايري' }, '⋏': { ⌇⊬⋔⏚⍜⌰: '⋏', ⌇⍜⎍⋏⎅: 'ني' },
+    '⍜': { ⌇⊬⋔⏚⍜⌰: '⍜', ⌇⍜⎍⋏⎅: 'سو' }, '⌿': { ⌇⊬⋔⏚⍜⌰: '⌿', ⌇⍜⎍⋏⎅: 'ان' },
+    '⍾': { ⌇⊬⋔⏚⍜⌰: '⍾', ⌇⍜⎍⋏⎅: 'قو' }, '⍀': { ⌇⊬⋔⏚⍜⌰: '⍀', ⌇⍜⎍⋏⎅: 'نا' },
+    '⌇': { ⌇⊬⋔⏚⍜⌰: '⌇', ⌇⍜⎍⋏⎅: 'كي' }, '⏁': { ⌇⊬⋔⏚⍜⌰: '⏁', ⌇⍜⎍⋏⎅: 'هي' },
+    '⎍': { ⌇⊬⋔⏚⍜⌰: '⎍', ⌇⍜⎍⋏⎅: 'ماي' }, '⎐': { ⌇⊬⋔⏚⍜⌰: '⎐', ⌇⍜⎍⋏⎅: 'فاين' },
+    '⍙': { ⌇⊬⋔⏚⍜⌰: '⍙', ⌇⍜⎍⋏⎅: 'يو' }, '⌖': { ⌇⊬⋔⏚⍜⌰: '⌖', ⌇⍜⎍⋏⎅: 'اش' },
+    '⊬': { ⌇⊬⋔⏚⍜⌰: '⊬', ⌇⍜⎍⋏⎅: 'جو' }, '⋉': { ⌇⊬⋔⏚⍜⌰: '⋉', ⌇⍜⎍⋏⎅: 'زاد' }
 };
 
-const reverseSymbols = {};
-Object.keys(zilusAlphabet).forEach(key => {
-    reverseSymbols[zilusAlphabet[key].symbol] = key;
+// بناء قاموس الرموز مع تنظيف وتوحيد التشفير منعا لأخطاء النسخ
+☊⍜⋏⌇⏁ ⍀⟒⎐⟒⍀⌇⟒⌇⊬⋔⏚⍜⌰⌇ = {};
+⍜⏚⟊⟒☊⏁.☍⟒⊬⌇(⋉⟟⌰⎍⌇⏃⌰⌿⊑⏃⏚⟒⏁).⎎⍜⍀⟒⏃☊⊑(☍⟒⊬ => {
+    ☊⍜⋏⌇⏁ ⌇⊬⋔ = ⋉⟟⌰⎍⌇⏃⌰⌿⊑⏃⏚⟒⏁[☍⟒⊬].⌇⊬⋔⏚⍜⌰.⏁⍀⟟⋔();
+    ⍀⟒⎐⟒⍀⌇⟒⌇⊬⋔⏚⍜⌰⌇[⌇⊬⋔] = ☍⟒⊬;
 });
 
-function handleTranslation() {
-    const direction = document.getElementById("translationDirection").value;
-    const input = document.getElementById("inputText").value;
-    const symbolsOutput = document.getElementById("symbolsOutput");
-    const soundsOutput = document.getElementById("soundsOutput");
+⎎⎍⋏☊⏁⟟⍜⋏ ⌇⋔⏃⍀⏁⏁⍀⏃⋏⌇⌰⏃⏁⟒() {
+    ☊⍜⋏⌇⏁ ⟟⋏⌿⎍⏁ = ⎅⍜☊⎍⋔⟒⋏⏁.☌⟒⏁⟒⌰⟒⋔⟒⋏⏁⏚⊬⟟⎅("⟟⋏⌿⎍⏁⏁⟒⌖⏁").⎐⏃⌰⎍⟒;
+    ☊⍜⋏⌇⏁ ⌇⊬⋔⏚⍜⌰⌇⍜⎍⏁⌿⎍⏁ = ⎅⍜☊⎍⋔⟒⋏⏁.☌⟒⏁⟒⌰⟒⋔⟒⋏⏁⏚⊬⟟⎅("⌇⊬⋔⏚⍜⌰⌇⍜⎍⏁⌿⎍⏁");
+    ☊⍜⋏⌇⏁ ⟒⋏☌⌰⟟⌇⊑⍜⎍⏁⌿⎍⏁ = ⎅⍜☊⎍⋔⟒⋏⏁.☌⟒⏁⟒⌰⟒⋔⟒⋏⏁⏚⊬⟟⎅("⟒⋏☌⌰⟟⌇⊑⍜⎍⏁⌿⎍⏁");
 
-    if (!input.trim()) {
-        alert("الرجاء إدخال نص للترجمة!");
-        return;
+    ⟟⎎ (!⟟⋏⌿⎍⏁.⏁⍀⟟⋔()) {
+        ⏃⌰⟒⍀⏁("الرجاء إدخال نص أولاً!");
+        ⍀⟒⏁⎍⍀⋏;
     }
 
-    if (direction === "en-to-zilus") {
-        let lowerText = input.toLowerCase();
-        let lines = lowerText.split("\n");
-        let finalSymbolsLines = [];
-        let finalHTML = "";
+    // فحص النص: هل يحتوي على أي من رموز زيلوس الفريدة؟
+    ⌰⟒⏁ ⊑⏃⌇⋉⟟⌰⎍⌇⌇⊬⋔⏚⍜⌰⌇ = ⎎⏃⌰⌇⟒;
+    ☊⍜⋏⌇⏁ ⌇⏃⋔⌿⌰⟒⌇⊬⋔⏚⍜⌰⌇ = ⍜⏚⟊⟒☊⏁.⎐⏃⌰⎍⟒⌇(⋉⟟⌰⎍⌇⏃⌰⌿⊑⏃⏚⟒⏁).⋔⏃⌿(⟟⏁⟒⋔ => ⟟⏁⟒⋔.⌇⊬⋔⏚⍜⌰);
+    ⎎⍜⍀ (⌰⟒⏁ ⌇⊬⋔ ⍜⎎ ⌇⏃⋔⌿⌰⟒⌇⊬⋔⏚⍜⌰⌇) {
+        ⟟⎎ (⟟⋏⌿⎍⏁.⟟⋏☊⌰⎍⎅⟒⌇(⌇⊬⋔)) {
+            ⊑⏃⌇⋉⟟⌰⎍⌇⌇⊬⋔⏚⍜⌰⌇ = ⏁⍀⎍⟒;
+            ⏚⍀⟒⏃☍;
+        }
+    }
 
-        lines.forEach(line => {
-            let words = line.split(" ");
-            let lineSymbols = [];
-            let lineHTML = "";
+    ⟟⎎ (⊑⏃⌇⋉⟟⌰⎍⌇⌇⊬⋔⏚⍜⌰⌇) {
+        // الاتجاه الأول: من رموز زيلوس إلى إنجليزية
+        ⌰⟒⏁ ⟒⋏☌⌰⟟⌇⊑⍀⟒⌇⎍⌰⏁ = "";
+        // استخدام ⏃⍀⍀⏃⊬.⎎⍀⍜⋔ للتعامل الصحيح مع الرموز البرمجية المعقدة (⌇⎍⍀⍀⍜☌⏃⏁⟒ ⌿⏃⟟⍀⌇) لكي لا تنقسم
+        ⌰⟒⏁ ☊⊑⏃⍀⌇⏃⍀⍀⏃⊬ = ⏃⍀⍀⏃⊬.⎎⍀⍜⋔(⟟⋏⌿⎍⏁); 
 
-            words.forEach(word => {
-                let wordSymbols = "";
-                let wordSounds = [];
-
-                for (let i = 0; i < word.length; i++) {
-                    let char = word[i];
-                    let nextChar = word[i + 1];
-
-                    if (zilusAlphabet[char]) {
-                        wordSymbols += zilusAlphabet[char].symbol;
-                        if (char === nextChar) {
-                            wordSounds.push("سس");
-                            wordSymbols += zilusAlphabet[char].symbol;
-                            i++; 
-                        } else {
-                            wordSounds.push(zilusAlphabet[char].sound);
-                        }
-                    } else {
-                        wordSymbols += char;
-                    }
-                }
-                lineSymbols.push(wordSymbols);
-                if(wordSounds.length > 0) {
-                    let wordSoundText = wordSounds.join("");
-                    lineHTML += `<span class="word-span" onclick="speakText('${wordSoundText}')">${wordSoundText}</span> `;
-                } else if(word.trim() !== "") {
-                    lineHTML += `<span style="color:#8b949e; margin:0 4px;">${word}</span> `;
-                }
-            });
-            finalSymbolsLines.push(lineSymbols.join(" "));
-            finalHTML += `<div>${lineHTML}</div>`;
-        });
-
-        symbolsOutput.innerHTML = finalSymbolsLines.join("\n");
-        soundsOutput.innerHTML = finalHTML;
-
-    } else {
-        // الترجمة العكسية الذكية والآمنة من لغتك الرمزية إلى الإنجليزية
-        let englishResult = "";
-        for (let i = 0; i < input.length; i++) {
-            let char = input[i];
-            if (reverseSymbols[char]) {
-                englishResult += reverseSymbols[char];
-            } else {
-                englishResult += char; // إبقاء المسافات، النقاط، الروابط، والأرقام كما هي دون تدمير النص
+        ⎎⍜⍀ (⌰⟒⏁ ⟟ = 0; ⟟ < ☊⊑⏃⍀⌇⏃⍀⍀⏃⊬.⌰⟒⋏☌⏁⊑; ⟟++) {
+            ⌰⟒⏁ ☊⊑⏃⍀ = ☊⊑⏃⍀⌇⏃⍀⍀⏃⊬[⟟];
+            ⟟⎎ (⍀⟒⎐⟒⍀⌇⟒⌇⊬⋔⏚⍜⌰⌇[☊⊑⏃⍀]) {
+                ⟒⋏☌⌰⟟⌇⊑⍀⟒⌇⎍⌰⏁ += ⍀⟒⎐⟒⍀⌇⟒⌇⊬⋔⏚⍜⌰⌇[☊⊑⏃⍀];
+            } ⟒⌰⌇⟒ {
+                ⟒⋏☌⌰⟟⌇⊑⍀⟒⌇⎍⌰⏁ += ☊⊑⏃⍀; // ترك المسافات والأرقام والروابط كما هي
             }
         }
-        symbolsOutput.innerHTML = "النص المترجم إلى الإنجليزية:";
-        soundsOutput.innerHTML = `<div style="color:var(--accent-color); font-size:18px; font-weight:bold; font-family:monospace; background:#0d1117; padding:15px; border-radius:6px; border:1px solid #30363d;">${englishResult.toUpperCase()}</div>`;
+        ⌇⊬⋔⏚⍜⌰⌇⍜⎍⏁⌿⎍⏁.⟟⋏⋏⟒⍀⊑⏁⋔⌰ = ⟟⋏⌿⎍⏁; // إبقاء الرموز في خانتها
+        ⟒⋏☌⌰⟟⌇⊑⍜⎍⏁⌿⎍⏁.⟟⋏⋏⟒⍀⊑⏁⋔⌰ = `<⌇⌿⏃⋏ ⌇⏁⊬⌰⟒="☊⍜⌰⍜⍀:⎐⏃⍀(--⏃☊☊⟒⋏⏁-☊⍜⌰⍜⍀)">${⟒⋏☌⌰⟟⌇⊑⍀⟒⌇⎍⌰⏁.⏁⍜⎍⌿⌿⟒⍀☊⏃⌇⟒()}</⌇⌿⏃⋏>`;
+
+    } ⟒⌰⌇⟒ {
+        // الاتجاه الثاني: من إنجليزية إلى رموز زيلوس + نطق
+        ⌰⟒⏁ ⌰⍜⍙⟒⍀⏁⟒⌖⏁ = ⟟⋏⌿⎍⏁.⏁⍜⌰⍜⍙⟒⍀☊⏃⌇⟒();
+        ⌰⟒⏁ ⌰⟟⋏⟒⌇ = ⌰⍜⍙⟒⍀⏁⟒⌖⏁.⌇⌿⌰⟟⏁("\⋏");
+        ⌰⟒⏁ ⎎⟟⋏⏃⌰⌇⊬⋔⏚⍜⌰⌇⌰⟟⋏⟒⌇ = [];
+        ⌰⟒⏁ ⎎⟟⋏⏃⌰⊑⏁⋔⌰ = "";
+
+        ⌰⟟⋏⟒⌇.⎎⍜⍀⟒⏃☊⊑(⌰⟟⋏⟒ => {
+            ⌰⟒⏁ ⍙⍜⍀⎅⌇ = ⌰⟟⋏⟒.⌇⌿⌰⟟⏁(" ");
+            ⌰⟒⏁ ⌰⟟⋏⟒⌇⊬⋔⏚⍜⌰⌇ = [];
+            ⌰⟒⏁ ⌰⟟⋏⟒⊑⏁⋔⌰ = "";
+
+            ⍙⍜⍀⎅⌇.⎎⍜⍀⟒⏃☊⊑(⍙⍜⍀⎅ => {
+                ⌰⟒⏁ ⍙⍜⍀⎅⌇⊬⋔⏚⍜⌰⌇ = "";
+                ⌰⟒⏁ ⍙⍜⍀⎅⌇⍜⎍⋏⎅⌇ = [];
+
+                ⎎⍜⍀ (⌰⟒⏁ ⟟ = 0; ⟟ < ⍙⍜⍀⎅.⌰⟒⋏☌⏁⊑; ⟟++) {
+                    ⌰⟒⏁ ☊⊑⏃⍀ = ⍙⍜⍀⎅[⟟];
+                    ⌰⟒⏁ ⋏⟒⌖⏁☊⊑⏃⍀ = ⍙⍜⍀⎅[⟟ + 1];
+
+                    ⟟⎎ (⋉⟟⌰⎍⌇⏃⌰⌿⊑⏃⏚⟒⏁[☊⊑⏃⍀]) {
+                        ⍙⍜⍀⎅⌇⊬⋔⏚⍜⌰⌇ += ⋉⟟⌰⎍⌇⏃⌰⌿⊑⏃⏚⟒⏁[☊⊑⏃⍀].⌇⊬⋔⏚⍜⌰;
+                        ⟟⎎ (☊⊑⏃⍀ === ⋏⟒⌖⏁☊⊑⏃⍀) {
+                            ⍙⍜⍀⎅⌇⍜⎍⋏⎅⌇.⌿⎍⌇⊑("سس");
+                            ⍙⍜⍀⎅⌇⊬⋔⏚⍜⌰⌇ += ⋉⟟⌰⎍⌇⏃⌰⌿⊑⏃⏚⟒⏁[☊⊑⏃⍀].⌇⊬⋔⏚⍜⌰;
+                            ⟟++; 
+                        } ⟒⌰⌇⟒ {
+                            ⍙⍜⍀⎅⌇⍜⎍⋏⎅⌇.⌿⎍⌇⊑(⋉⟟⌰⎍⌇⏃⌰⌿⊑⏃⏚⟒⏁[☊⊑⏃⍀].⌇⍜⎍⋏⎅);
+                        }
+                    } ⟒⌰⌇⟒ {
+                        ⍙⍜⍀⎅⌇⊬⋔⏚⍜⌰⌇ += ☊⊑⏃⍀;
+                    }
+                }
+                ⌰⟟⋏⟒⌇⊬⋔⏚⍜⌰⌇.⌿⎍⌇⊑(⍙⍜⍀⎅⌇⊬⋔⏚⍜⌰⌇);
+                ⟟⎎(⍙⍜⍀⎅⌇⍜⎍⋏⎅⌇.⌰⟒⋏☌⏁⊑ > 0) {
+                    ⌰⟒⏁ ⍙⍜⍀⎅⌇⍜⎍⋏⎅⏁⟒⌖⏁ = ⍙⍜⍀⎅⌇⍜⎍⋏⎅⌇.⟊⍜⟟⋏("");
+                    ⌰⟟⋏⟒⊑⏁⋔⌰ += `<⌇⌿⏃⋏ ☊⌰⏃⌇⌇="⍙⍜⍀⎅-⌇⌿⏃⋏" ⍜⋏☊⌰⟟☊☍="⌇⌿⟒⏃☍⏁⟒⌖⏁('${⍙⍜⍀⎅⌇⍜⎍⋏⎅⏁⟒⌖⏁}')">${⍙⍜⍀⎅⌇⍜⎍⋏⎅⏁⟒⌖⏁}</⌇⌿⏃⋏> `;
+                } ⟒⌰⌇⟒ ⟟⎎(⍙⍜⍀⎅.⏁⍀⟟⋔() !== "") {
+                    ⌰⟟⋏⟒⊑⏁⋔⌰ += `<⌇⌿⏃⋏ ⌇⏁⊬⌰⟒="☊⍜⌰⍜⍀:#8⏚949⟒; ⋔⏃⍀☌⟟⋏:0 4⌿⌖;">${⍙⍜⍀⎅}</⌇⌿⏃⋏> `;
+                }
+            });
+            ⎎⟟⋏⏃⌰⌇⊬⋔⏚⍜⌰⌇⌰⟟⋏⟒⌇.⌿⎍⌇⊑(⌰⟟⋏⟒⌇⊬⋔⏚⍜⌰⌇.⟊⍜⟟⋏(" "));
+            ⎎⟟⋏⏃⌰⊑⏁⋔⌰ += `<⎅⟟⎐>${⌰⟟⋏⟒⊑⏁⋔⌰}</⎅⟟⎐>`;
+        });
+
+        ⌇⊬⋔⏚⍜⌰⌇⍜⎍⏁⌿⎍⏁.⟟⋏⋏⟒⍀⊑⏁⋔⌰ = ⎎⟟⋏⏃⌰⌇⊬⋔⏚⍜⌰⌇⌰⟟⋏⟒⌇.⟊⍜⟟⋏("\⋏");
+        ⟒⋏☌⌰⟟⌇⊑⍜⎍⏁⌿⎍⏁.⟟⋏⋏⟒⍀⊑⏁⋔⌰ = ⎎⟟⋏⏃⌰⊑⏁⋔⌰;
     }
 }
 
-function speakText(text) {
-    if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        let utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'ar-SA'; 
-        utterance.rate = 0.8;    
-        window.speechSynthesis.speak(utterance);
+⎎⎍⋏☊⏁⟟⍜⋏ ⌇⌿⟒⏃☍⏁⟒⌖⏁(⏁⟒⌖⏁) {
+    ⟟⎎ ('⌇⌿⟒⟒☊⊑⌇⊬⋏⏁⊑⟒⌇⟟⌇' ⟟⋏ ⍙⟟⋏⎅⍜⍙) {
+        ⍙⟟⋏⎅⍜⍙.⌇⌿⟒⟒☊⊑⌇⊬⋏⏁⊑⟒⌇⟟⌇.☊⏃⋏☊⟒⌰();
+        ⌰⟒⏁ ⎍⏁⏁⟒⍀⏃⋏☊⟒ = ⋏⟒⍙ ⌇⌿⟒⟒☊⊑⌇⊬⋏⏁⊑⟒⌇⟟⌇⎍⏁⏁⟒⍀⏃⋏☊⟒(⏁⟒⌖⏁);
+        ⎍⏁⏁⟒⍀⏃⋏☊⟒.⌰⏃⋏☌ = '⏃⍀-⌇⏃'; 
+        ⎍⏁⏁⟒⍀⏃⋏☊⟒.⍀⏃⏁⟒ = 0.8;    
+        ⍙⟟⋏⎅⍜⍙.⌇⌿⟒⟒☊⊑⌇⊬⋏⏁⊑⟒⌇⟟⌇.⌇⌿⟒⏃☍(⎍⏁⏁⟒⍀⏃⋏☊⟒);
     }
 }
-</script>
-</body>
-</html>
+</⌇☊⍀⟟⌿⏁>
+</⏚⍜⎅⊬>
+</⊑⏁⋔⌰>
