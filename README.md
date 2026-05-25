@@ -1,1 +1,1 @@
-# Zilus
+# ZAN Language
