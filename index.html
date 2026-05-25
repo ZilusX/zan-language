@@ -1,109 +1,248 @@
-<!⎅⍜☊⏁⊬⌿⟒ ⊑⏁⋔⌰>
-<⊑⏁⋔⌰ ⌰⏃⋏☌="⏃⍀" ⎅⟟⍀="⍀⏁⌰">
-<⊑⟒⏃⎅>
-    <⋔⟒⏁⏃ ☊⊑⏃⍀⌇⟒⏁="⎍⏁⎎-8">
-    <⋔⟒⏁⏃ ⋏⏃⋔⟒="⎐⟟⟒⍙⌿⍜⍀⏁" ☊⍜⋏⏁⟒⋏⏁="⍙⟟⎅⏁⊑=⎅⟒⎐⟟☊⟒-⍙⟟⎅⏁⊑, ⟟⋏⟟⏁⟟⏃⌰-⌇☊⏃⌰⟒=1.0">
-    <⏁⟟⏁⌰⟒>⋉⟟⌰⎍⌇ ⌇⋔⏃⍀⏁ ⏁⍀⏃⋏⌇⌰⏃⏁⍜⍀ 🪐</⏁⟟⏁⌰⟒>
-    <⌇⏁⊬⌰⟒>
-        :⍀⍜⍜⏁ {
-            --⏚☌-☊⍜⌰⍜⍀: #0⎅1117;
-            --⌿⏃⋏⟒⌰-⏚☌: #161⏚22;
-            --⏃☊☊⟒⋏⏁-☊⍜⌰⍜⍀: #58⏃6⎎⎎;
-            --⏁⟒⌖⏁-☊⍜⌰⍜⍀: #☊9⎅1⎅9;
-            --⋏⟒⍜⋏-☌⍀⟒⟒⋏: #7⟒⟒787;
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zilus Smart Translator 🪐</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --panel-bg: #161b22;
+            --accent-color: #58a6ff;
+            --text-color: #c9d1d9;
+            --neon-green: #7ee787;
         }
-        ⏚⍜⎅⊬ {
-            ⎎⍜⋏⏁-⎎⏃⋔⟟⌰⊬: '⌇⟒☌⍜⟒ ⎍⟟', ⏁⏃⊑⍜⋔⏃, ☌⟒⋏⟒⎐⏃, ⎐⟒⍀⎅⏃⋏⏃, ⌇⏃⋏⌇-⌇⟒⍀⟟⎎;
-            ⏚⏃☊☍☌⍀⍜⎍⋏⎅-☊⍜⌰⍜⍀: ⎐⏃⍀(--⏚☌-☊⍜⌰⍜⍀);
-            ☊⍜⌰⍜⍀: ⎐⏃⍀(--⏁⟒⌖⏁-☊⍜⌰⍜⍀);
-            ⋔⏃⍀☌⟟⋏: 0;
-            ⌿⏃⎅⎅⟟⋏☌: 20⌿⌖;
-            ⏁⟒⌖⏁-⏃⌰⟟☌⋏: ☊⟒⋏⏁⟒⍀;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            text-align: center;
         }
-        .☊⍜⋏⏁⏃⟟⋏⟒⍀ {
-            ⋔⏃⌖-⍙⟟⎅⏁⊑: 850⌿⌖;
-            ⋔⏃⍀☌⟟⋏: 0 ⏃⎍⏁⍜;
-            ⏚⏃☊☍☌⍀⍜⎍⋏⎅: ⎐⏃⍀(--⌿⏃⋏⟒⌰-⏚☌);
-            ⌿⏃⎅⎅⟟⋏☌: 30⌿⌖;
-            ⏚⍜⍀⎅⟒⍀-⍀⏃⎅⟟⎍⌇: 12⌿⌖;
-            ⏚⍜⌖-⌇⊑⏃⎅⍜⍙: 0 0 20⌿⌖ ⍀☌⏚⏃(88, 166, 255, 0.2);
-            ⏚⍜⍀⎅⟒⍀: 1⌿⌖ ⌇⍜⌰⟟⎅ #21262⎅;
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--panel-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(88, 166, 255, 0.2);
+            border: 1px solid #21262d;
         }
-        ⊑1 { ☊⍜⌰⍜⍀: ⎐⏃⍀(--⏃☊☊⟒⋏⏁-☊⍜⌰⍜⍀); ⋔⏃⍀☌⟟⋏-⏚⍜⏁⏁⍜⋔: 5⌿⌖; }
-        ⌿.⌇⎍⏚⏁⟟⏁⌰⟒ { ☊⍜⌰⍜⍀: #8⏚949⟒; ⎎⍜⋏⏁-⌇⟟⋉⟒: 14⌿⌖; ⋔⏃⍀☌⟟⋏-⏚⍜⏁⏁⍜⋔: 25⌿⌖; }
-        ⏁⟒⌖⏁⏃⍀⟒⏃ {
-            ⍙⟟⎅⏁⊑: 100%;
-            ⊑⟒⟟☌⊑⏁: 140⌿⌖;
-            ⌿⏃⎅⎅⟟⋏☌: 12⌿⌖;
-            ⏚⏃☊☍☌⍀⍜⎍⋏⎅: #21262⎅;
-            ⏚⍜⍀⎅⟒⍀: 1⌿⌖ ⌇⍜⌰⟟⎅ #30363⎅;
-            ⏚⍜⍀⎅⟒⍀-⍀⏃⎅⟟⎍⌇: 6⌿⌖;
-            ☊⍜⌰⍜⍀: #⎎⎎⎎;
-            ⎎⍜⋏⏁-⌇⟟⋉⟒: 16⌿⌖;
-            ⏚⍜⌖-⌇⟟⋉⟟⋏☌: ⏚⍜⍀⎅⟒⍀-⏚⍜⌖;
-            ⋔⏃⍀☌⟟⋏-⏚⍜⏁⏁⍜⋔: 15⌿⌖;
-            ⍀⟒⌇⟟⋉⟒: ⋏⍜⋏⟒;
-            ⎅⟟⍀⟒☊⏁⟟⍜⋏: ⌰⏁⍀;
-            ⏁⟒⌖⏁-⏃⌰⟟☌⋏: ⌰⟒⎎⏁;
+        h1 { color: var(--accent-color); margin-bottom: 5px; }
+        p.subtitle { color: #8b949e; font-size: 14px; margin-bottom: 25px; }
+        textarea {
+            width: 100%;
+            height: 140px;
+            padding: 12px;
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 16px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            resize: none;
+            direction: ltr;
+            text-align: left;
         }
-        ⏚⎍⏁⏁⍜⋏ {
-            ⏚⏃☊☍☌⍀⍜⎍⋏⎅-☊⍜⌰⍜⍀: ⎐⏃⍀(--⏃☊☊⟒⋏⏁-☊⍜⌰⍜⍀);
-            ☊⍜⌰⍜⍀: #⎎⎎⎎;
-            ⏚⍜⍀⎅⟒⍀: ⋏⍜⋏⟒;
-            ⌿⏃⎅⎅⟟⋏☌: 14⌿⌖ 24⌿⌖;
-            ⎎⍜⋏⏁-⌇⟟⋉⟒: 16⌿⌖;
-            ⎎⍜⋏⏁-⍙⟒⟟☌⊑⏁: ⏚⍜⌰⎅;
-            ⏚⍜⍀⎅⟒⍀-⍀⏃⎅⟟⎍⌇: 6⌿⌖;
-            ☊⎍⍀⌇⍜⍀: ⌿⍜⟟⋏⏁⟒⍀;
-            ⍙⟟⎅⏁⊑: 100%;
-            ⏁⍀⏃⋏⌇⟟⏁⟟⍜⋏: 0.3⌇;
+        button {
+            background-color: var(--accent-color);
+            color: #fff;
+            border: none;
+            padding: 14px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
         }
-        ⏚⎍⏁⏁⍜⋏:⊑⍜⎐⟒⍀ { ⏚⏃☊☍☌⍀⍜⎍⋏⎅-☊⍜⌰⍜⍀: #1⎎6⎎⟒⏚; }
-        .⏚⍜⌖-⏁⟟⏁⌰⟒ {
-            ⏁⟒⌖⏁-⏃⌰⟟☌⋏: ⍀⟟☌⊑⏁;
-            ⎎⍜⋏⏁-⌇⟟⋉⟒: 14⌿⌖;
-            ☊⍜⌰⍜⍀: ⎐⏃⍀(--⏃☊☊⟒⋏⏁-☊⍜⌰⍜⍀);
-            ⋔⏃⍀☌⟟⋏-⏁⍜⌿: 20⌿⌖;
-            ⋔⏃⍀☌⟟⋏-⏚⍜⏁⏁⍜⋔: 5⌿⌖;
-            ⎎⍜⋏⏁-⍙⟒⟟☌⊑⏁: ⏚⍜⌰⎅;
+        button:hover { background-color: #1f6feb; }
+        .box-title {
+            text-align: right;
+            font-size: 14px;
+            color: var(--accent-color);
+            margin-top: 20px;
+            margin-bottom: 5px;
+            font-weight: bold;
         }
-        .⍜⎍⏁⌿⎍⏁-⏚⍜⌖ {
-            ⏚⏃☊☍☌⍀⍜⎍⋏⎅: #0⎅1117;
-            ⏚⍜⍀⎅⟒⍀: 1⌿⌖ ⌇⍜⌰⟟⎅ #30363⎅;
-            ⌿⏃⎅⎅⟟⋏☌: 15⌿⌖;
-            ⏚⍜⍀⎅⟒⍀-⍀⏃⎅⟟⎍⌇: 6⌿⌖;
-            ⏁⟒⌖⏁-⏃⌰⟟☌⋏: ⌰⟒⎎⏁;
-            ⎅⟟⍀⟒☊⏁⟟⍜⋏: ⌰⏁⍀;
-            ⋔⟟⋏-⊑⟒⟟☌⊑⏁: 50⌿⌖;
-            ⎎⍜⋏⏁-⎎⏃⋔⟟⌰⊬: ⋔⍜⋏⍜⌇⌿⏃☊⟒;
-            ⍙⍜⍀⎅-⍙⍀⏃⌿: ⏚⍀⟒⏃☍-⍙⍜⍀⎅;
-            ⍙⊑⟟⏁⟒-⌇⌿⏃☊⟒: ⌿⍀⟒-⍙⍀⏃⌿;
+        .output-box {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: left;
+            direction: ltr;
+            min-height: 50px;
+            font-family: monospace;
+            word-wrap: break-word;
+            white-space: pre-wrap;
         }
-        #⌇⊬⋔⏚⍜⌰⌇⍜⎍⏁⌿⎍⏁ { ⎎⍜⋏⏁-⌇⟟⋉⟒: 22⌿⌖; ☊⍜⌰⍜⍀: ⎐⏃⍀(--⋏⟒⍜⋏-☌⍀⟒⟒⋏); ⌰⟒⏁⏁⟒⍀-⌇⌿⏃☊⟟⋏☌: 1⌿⌖; }
-        #⟒⋏☌⌰⟟⌇⊑⍜⎍⏁⌿⎍⏁ { ⎎⍜⋏⏁-⌇⟟⋉⟒: 18⌿⌖; ☊⍜⌰⍜⍀: #⎎⎎⎎; ⎎⍜⋏⏁-⍙⟒⟟☌⊑⏁: ⏚⍜⌰⎅; }
-        .⍙⍜⍀⎅-⌇⌿⏃⋏ {
-            ⎅⟟⌇⌿⌰⏃⊬: ⟟⋏⌰⟟⋏⟒-⏚⌰⍜☊☍;
-            ⋔⏃⍀☌⟟⋏: 2⌿⌖ 4⌿⌖;
-            ⌿⏃⎅⎅⟟⋏☌: 2⌿⌖ 6⌿⌖;
-            ⏚⍜⍀⎅⟒⍀-⍀⏃⎅⟟⎍⌇: 4⌿⌖;
-            ⏚⏃☊☍☌⍀⍜⎍⋏⎅: #21262⎅;
-            ☊⎍⍀⌇⍜⍀: ⌿⍜⟟⋏⏁⟒⍀;
-            ⎍⌇⟒⍀-⌇⟒⌰⟒☊⏁: ⋏⍜⋏⟒;
-            ⏚⍜⍀⎅⟒⍀: 1⌿⌖ ⌇⍜⌰⟟⎅ #30363⎅;
+        #symbolsOutput { font-size: 22px; color: var(--neon-green); letter-spacing: 1px; }
+        #englishOutput { font-size: 18px; color: #fff; font-weight: bold; }
+        .word-span {
+            display: inline-block;
+            margin: 2px 4px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: #21262d;
+            cursor: pointer;
+            user-select: none;
+            border: 1px solid #30363d;
         }
-        .⍙⍜⍀⎅-⌇⌿⏃⋏:⊑⍜⎐⟒⍀ { ⏚⏃☊☍☌⍀⍜⎍⋏⎅: ⎐⏃⍀(--⏃☊☊⟒⋏⏁-☊⍜⌰⍜⍀); }
-        .⟟⋏⌇⏁⍀⎍☊⏁⟟⍜⋏ {
-            ⎎⍜⋏⏁-⌇⟟⋉⟒: 12⌿⌖;
-            ☊⍜⌰⍜⍀: #8⏚949⟒;
-            ⎅⟟⌇⌿⌰⏃⊬: ⏚⌰⍜☊☍;
-            ⋔⏃⍀☌⟟⋏-⏁⍜⌿: 15⌿⌖;
-            ⏁⟒⌖⏁-⏃⌰⟟☌⋏: ⍀⟟☌⊑⏁;
-            ⎅⟟⍀⟒☊⏁⟟⍜⋏: ⍀⏁⌰;
+        .word-span:hover { background: var(--accent-color); }
+        .instruction {
+            font-size: 12px;
+            color: #8b949e;
+            display: block;
+            margin-top: 15px;
+            text-align: right;
+            direction: rtl;
         }
-    </⌇⏁⊬⌰⟒>
-</⊑⟒⏃⎅>
-<⏚⍜⎅⊬>
+    </style>
+</head>
+<body>
 
+<div class="container">
+    <h1>المترجم الذكي للغة زيلوس 🪐</h1>
+    <p class="subtitle">نظام الترجمة التلقائية ثنائية الاتجاه (اكتب فقط واضغط ترجمة)</p>
+
+    <textarea id="inputText" placeholder="ضع هنا نصاً إنجليزياً ليتحول إلى رموز، أو ضع الرموز لتتحول فوراً إلى إنجليزية..."></textarea>
+    <button onclick="smartTranslate()">ترجم النص الآن</button>
+
+    <div class="box-title">الترجمة البصرية (الرموز السرية):</div>
+    <div id="symbolsOutput" class="output-box">...</div>
+
+    <div class="box-title">الترجمة النصية / النطق الصوتي المسموع:</div>
+    <div id="englishOutput" class="output-box">...</div>
+
+    <span class="instruction">💡 تم دمج الاتجاهين! الموقع سيعرف تلقائياً نوع النص الذي أدخلته ويقوم بفك شفرته أو تشفيره بلحظتها.</span>
+</div>
+
+<script>
+const zilusAlphabet = {
+    'a': { symbol: '⏃', sound: 'سا' }, 'b': { symbol: '⏚', sound: 'بارو' },
+    'c': { symbol: '☊', sound: 'سن' }, 'd': { symbol: '⎅', sound: 'دا' },
+    'e': { symbol: '⟒', sound: 'سي' }, 'f': { symbol: '⎎', sound: 'يون' },
+    'g': { symbol: '☌', sound: 'سين' }, 'h': { symbol: '⊑', sound: 'هام' },
+    'i': { symbol: '⟟', sound: 'از' }, 'j': { symbol: '⟊', sound: 'ام' },
+    'k': { symbol: '☍', sound: 'نان' }, 'l': { symbol: '⌰', sound: 'سير' },
+    'm': { symbol: '⋔', sound: 'مايري' }, 'n': { symbol: '⋏', sound: 'ني' },
+    'o': { symbol: '⍜', sound: 'سو' }, 'p': { symbol: '⌿', sound: 'ان' },
+    'q': { symbol: '⍾', sound: 'قو' }, 'r': { symbol: '⍀', sound: 'نا' },
+    's': { symbol: '⌇', sound: 'كي' }, 't': { symbol: '⏁', sound: 'هي' },
+    'u': { symbol: '⎍', sound: 'ماي' }, 'v': { symbol: '⎐', sound: 'فاين' },
+    'w': { symbol: '⍙', sound: 'يو' }, 'x': { symbol: '⌖', sound: 'اش' },
+    'y': { symbol: '⊬', sound: 'جو' }, 'z': { symbol: '⋉', sound: 'زاد' }
+};
+
+// بناء قاموس الرموز مع تنظيف وتوحيد التشفير منعا لأخطاء النسخ
+const reverseSymbols = {};
+Object.keys(zilusAlphabet).forEach(key => {
+    const sym = zilusAlphabet[key].symbol.trim();
+    reverseSymbols[sym] = key;
+});
+
+function smartTranslate() {
+    const input = document.getElementById("inputText").value;
+    const symbolsOutput = document.getElementById("symbolsOutput");
+    const englishOutput = document.getElementById("englishOutput");
+
+    if (!input.trim()) {
+        alert("الرجاء إدخال نص أولاً!");
+        return;
+    }
+
+    // فحص النص: هل يحتوي على أي من رموز زيلوس الفريدة؟
+    let hasZilusSymbols = false;
+    const sampleSymbols = Object.values(zilusAlphabet).map(item => item.symbol);
+    for (let sym of sampleSymbols) {
+        if (input.includes(sym)) {
+            hasZilusSymbols = true;
+            break;
+        }
+    }
+
+    if (hasZilusSymbols) {
+        // الاتجاه الأول: من رموز زيلوس إلى إنجليزية
+        let englishResult = "";
+        // استخدام Array.from للتعامل الصحيح مع الرموز البرمجية المعقدة (Surrogate pairs) لكي لا تنقسم
+        let charsArray = Array.from(input); 
+
+        for (let i = 0; i < charsArray.length; i++) {
+            let char = charsArray[i];
+            if (reverseSymbols[char]) {
+                englishResult += reverseSymbols[char];
+            } else {
+                englishResult += char; // ترك المسافات والأرقام والروابط كما هي
+            }
+        }
+        symbolsOutput.innerHTML = input; // إبقاء الرموز في خانتها
+        englishOutput.innerHTML = `<span style="color:var(--accent-color)">${englishResult.toUpperCase()}</span>`;
+
+    } else {
+        // الاتجاه الثاني: من إنجليزية إلى رموز زيلوس + نطق
+        let lowerText = input.toLowerCase();
+        let lines = lowerText.split("\n");
+        let finalSymbolsLines = [];
+        let finalHTML = "";
+
+        lines.forEach(line => {
+            let words = line.split(" ");
+            let lineSymbols = [];
+            let lineHTML = "";
+
+            words.forEach(word => {
+                let wordSymbols = "";
+                let wordSounds = [];
+
+                for (let i = 0; i < word.length; i++) {
+                    let char = word[i];
+                    let nextChar = word[i + 1];
+
+                    if (zilusAlphabet[char]) {
+                        wordSymbols += zilusAlphabet[char].symbol;
+                        if (char === nextChar) {
+                            wordSounds.push("سس");
+                            wordSymbols += zilusAlphabet[char].symbol;
+                            i++; 
+                        } else {
+                            wordSounds.push(zilusAlphabet[char].sound);
+                        }
+                    } else {
+                        wordSymbols += char;
+                    }
+                }
+                lineSymbols.push(wordSymbols);
+                if(wordSounds.length > 0) {
+                    let wordSoundText = wordSounds.join("");
+                    lineHTML += `<span class="word-span" onclick="speakText('${wordSoundText}')">${wordSoundText}</span> `;
+                } else if(word.trim() !== "") {
+                    lineHTML += `<span style="color:#8b949e; margin:0 4px;">${word}</span> `;
+                }
+            });
+            finalSymbolsLines.push(lineSymbols.join(" "));
+            finalHTML += `<div>${lineHTML}</div>`;
+        });
+
+        symbolsOutput.innerHTML = finalSymbolsLines.join("\n");
+        englishOutput.innerHTML = finalHTML;
+    }
+}
+
+function speakText(text) {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        let utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'ar-SA'; 
+        utterance.rate = 0.8;    
+        window.speechSynthesis.speak(utterance);
+    }
+}
+</script>
+</body>
+</html>
 <⎅⟟⎐ ☊⌰⏃⌇⌇="☊⍜⋏⏁⏃⟟⋏⟒⍀">
     <⊑1>المترجم الذكي للغة زيلوس 🪐</⊑1>
     <⌿ ☊⌰⏃⌇⌇="⌇⎍⏚⏁⟟⏁⌰⟒">نظام الترجمة التلقائية ثنائية الاتجاه (اكتب فقط واضغط ترجمة)</⌿>
