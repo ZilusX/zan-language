@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zilus Translator & Voice System</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --panel-bg: #161b22;
+            --accent-color: #58a6ff;
+            --text-color: #c9d1d9;
+            --neon-green: #7ee787;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--panel-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(88, 166, 255, 0.2);
+            border: 1px solid #21262d;
+        }
+        h1 { color: var(--accent-color); margin-bottom: 5px; }
+        p.subtitle { color: #8b949e; font-size: 14px; margin-bottom: 30px; }
+        select, textarea {
+            width: 100%;
+            padding: 12px;
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 16px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+        textarea { height: 120px; resize: none; text-align: right; }
+        button {
+            background-color: var(--accent-color);
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+        button:hover { background-color: #1f6feb; }
+        .output-box {
+            margin-top: 25px;
+            background: #0d1117;
+            border: 1px dashed var(--accent-color);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: right;
+            min-height: 80px;
+        }
+        .result-symbols {
+            font-size: 24px;
+            letter-spacing: 2px;
+            color: var(--neon-green);
+            margin-bottom: 15px;
+            word-wrap: break-word;
+        }
+        /* تصميم الكلمات القابلة للضغط والنطق */
+        .word-span {
+            display: inline-block;
+            margin: 0 4px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: #21262d;
+            cursor: pointer;
+            user-select: none;
+            transition: 0.2s;
+            border: 1px solid #30363d;
+        }
+        .word-span:hover {
+            background: var(--accent-color);
+            color: #fff;
+        }
+        .audio-instruction {
+            font-size: 12px;
+            color: #8b949e;
+            margin-top: 10px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>مترجم لغة زيلوس السرية 🪐</h1>
+    <p class="subtitle">نظام الترجمة الفورية والتحكم الصوتي المتقدم</p>
+
+    <label for="translationDirection">اختر نوع الترجمة:</label>
+    <select id="translationDirection">
+        <option value="en-to-zilus">من الإنجليزية إلى لغة زيلوس (رموز ونطق)</option>
+        <option value="zilus-to-en">من لغة زيلوس (رموز) إلى الإنجليزية/العربية</option>
+    </select>
+
+    <textarea id="inputText" placeholder="اكتب نصك هنا..."></textarea>
+    <button onclick="handleTranslation()">ترجم النص الآن</button>
+
+    <div class="output-box">
+        <div id="symbolsOutput" class="result-symbols">الرموز ستظهر هنا...</div>
+        <div id="soundsOutput">النطق الصوتي سيظهر هنا (كلمات قابلة للضغط)...</div>
+        <span class="audio-instruction">💡 اضغط ضغطة عادية (أو مطولة) على الكلمة لنطقها وحدها، أو اضغط على الزر لتشغيل النص كامل.</span>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
+
